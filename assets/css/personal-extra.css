@@ -1,0 +1,18 @@
+  /* PERSONAL */
+  #navCoin{
+    width: 30px;
+    height: 30px;
+    border: 1px solid #000000;
+    border-radius: 50%;
+    padding: 3px;
+    animation: rollCoin 1.5s linear alternate infinite;
+  }
+
+  @keyframes rollCoin {
+      from{
+          transform: rotateY(0deg);
+      }
+      to{
+          transform: rotateY(360deg);
+      }
+  }
