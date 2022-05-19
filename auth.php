@@ -1,3 +1,4 @@
+<?php  require "assets/includes/sessions.php"; ?>
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -40,42 +41,7 @@
             <div class="classy-nav-container breakpoint-off">
                 <div class="container">
                     <!-- Menu -->
-                    <nav class="classy-navbar justify-content-between" id="oneMusicNav">
-
-                        <!-- Nav brand -->
-                        <a href="index.html" class="nav-brand"><img src="assets/img/core-img/logo.png" alt="" class="mainLogo"></a>
-
-                        <!-- Navbar Toggler -->
-                        <div class="classy-navbar-toggler">
-                            <span class="navbarToggler"><span></span><span></span><span></span></span>
-                        </div>
-
-                        <!-- Menu -->
-                        <div class="classy-menu">
-
-                            <!-- Close Button -->
-                            <div class="classycloseIcon">
-                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                            </div>
-
-                            <!-- Nav Start -->
-                            <div class="classynav">
-                                <ul class="pt-3">
-                                    <li><a href="#contactUs">Contact</a></li>
-                                </ul>
-
-                                <!-- Login/Register & Cart Button -->
-                                <div class="login-register-cart-button d-flex align-items-center">
-                                    <!-- Login/Register -->
-                                    <div class="login-register-btn mr-50">
-                                        <a href="login.html" id="loginBtn">Login / Register</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Nav End -->
-
-                        </div>
-                    </nav>
+                    <?php require_once "assets/includes/navbar.php"; ?>
                 </div>
             </div>
         </div>
@@ -105,6 +71,7 @@
                         <!-- Login Form -->
                         <div class="login-form login">
                             <h3>Welcome Back</h3>
+                            <?php  echo errorMessage(); echo successMessage(); ?>
                             <label for="exampleInputEmail1" class="d-block text-left">Email address</label>
                             <form action="#" method="post">
                                 <div class="form-group">
@@ -121,8 +88,17 @@
                         </div>
 
                         <div class="login-form register d-none">
-                            <form action="#" method="post">
+                            <form action="assets/config/register_control" method="post">
                                 <h3>Create an Account to get Started</h3>
+                                <div class="form-group">
+                                    <label for="exampleInputName">Full Name</label>
+                                    <input type="text" class="form-control" id="exampleInputName" placeholder="Enter Full Name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example">User Name</label>
+                                    <input type="text" class="form-control" id="example" placeholder="Enter User Name">
+                                </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Email address</label>
                                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter E-mail">
@@ -132,7 +108,11 @@
                                     <label for="exampleInputPassword1">Password</label>
                                     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                                 </div>
-                                <button type="submit" class="btn oneMusic-btn mt-30">Login</button>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Confirm Password</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password">
+                                </div>
+                                <button type="submit" class="btn oneMusic-btn mt-30">Register</button>
 
 
                                 <a href="#" class="nav-link text-dark" onclick="change()">Login Instead</a>
