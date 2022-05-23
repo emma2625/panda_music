@@ -67,11 +67,10 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8">
                     <div class="login-content">
-                        
+                        <div id="message">  <?php  echo errorMessage(); echo successMessage(); ?></div>
                         <!-- Login Form -->
                         <div class="login-form login">
                             <h3>Welcome Back</h3>
-                            <?php  echo errorMessage(); echo successMessage(); ?>
                             <label for="exampleInputEmail1" class="d-block text-left">Email address</label>
                             <form action="#" method="post">
                                 <div class="form-group">
@@ -86,38 +85,40 @@
                                 <a href="#" class="nav-link text-dark" onclick="change()">Create An Account Today to get 12 panda coins</a>
                             </form>
                         </div>
-
+                                 
+                        <!-- register form -->
                         <div class="login-form register d-none">
                             <form action="assets/config/register_control" method="post">
                                 <h3>Create an Account to get Started</h3>
                                 <div class="form-group">
                                     <label for="exampleInputName">Full Name</label>
-                                    <input type="text" class="form-control" id="exampleInputName" placeholder="Enter Full Name">
+                                    <input type="text" class="form-control" name="fname" id="exampleInputName" placeholder="Enter Full Name">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="example">User Name</label>
-                                    <input type="text" class="form-control" id="example" placeholder="Enter User Name">
+                                    <input type="text" class="form-control" name="uname" id="example" placeholder="Enter User Name">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter E-mail">
-                                    <small id="emailHelp" class="form-text text-muted"><i class="fa fa-lock mr-2"></i>We'll never share your email with anyone else.</small>
+                                    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter E-mail">
+                                    <small id="emailHelp" class="form-text  text-muted"><i class="fa fa-lock mr-2"></i>We'll never share your email with anyone else.</small>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                    <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Confirm Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password">
+                                    <input type="password" class="form-control" name="cpass" id="exampleInputPassword1" placeholder="Confirm Password">
                                 </div>
-                                <button type="submit" class="btn oneMusic-btn mt-30">Register</button>
+                                <button type="submit" name="register" class="btn oneMusic-btn mt-30">Register</button>
 
 
                                 <a href="#" class="nav-link text-dark" onclick="change()">Login Instead</a>
                             </form>
                         </div>  
+                        <!-- register form ends -->
                     </div>
                 </div>
             </div>
