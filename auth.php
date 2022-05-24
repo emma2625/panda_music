@@ -122,6 +122,7 @@
                             </form>
                         <!-- Register Form Ends -->
                         </div>  
+                        <!-- register form ends -->
                     </div>
                 </div>
             </div>
