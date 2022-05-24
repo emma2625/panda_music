@@ -5,7 +5,7 @@
 
    function errorMessage(){
         if (isset($_SESSION['errormessage'])) {
-            $output = "<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">
+            $output = "<div class=\"alert bg-danger text-center text-light alert-dismissible fade show\" role=\"alert\">
             <strong>";
 
             $output .= htmlentities($_SESSION['errormessage']);
@@ -21,7 +21,7 @@
 
    function successMessage(){
     if (isset($_SESSION['successmessage'])) {
-        $output = "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
+        $output = "<div class=\"alert bg-success alert-dismissible text-center text-light fade show\" role=\"alert\">
         <strong>";
 
         $output .= htmlentities($_SESSION['successmessage']);

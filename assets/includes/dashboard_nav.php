@@ -35,14 +35,28 @@
         </ul>
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item nav-settings me-5 d-none d-lg-flex">
-            <img src="../assets/img/core-img/pandaCoin.png" alt="coin" id="navCoin"><span>12</span>
+            <img src="../assets/img/core-img/pandaCoin.png" alt="coin" id="navCoin">
+            <span><?php echo $row['panda_coin'] ?></span>
           </li>
           <!-- Profile Pic And DropDown Start -->
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="../assets/img/bg-img/a10.jpg" alt="profile"/>
+              <img src="../assets/img/profile_Uploads/<?php
+                        $img = $row['prof_pic'];
+                        if (empty($img)) {
+                            echo "user.png";
+                        }else{
+                            echo "$img?".mt_rand();
+                        }
+                    ?>" alt="profile"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+              <h6 class="fw-bold dropdown-item"><?php echo ucwords($row['full_name']); ?></h6>
+              
+              <h6 class="fw-bold dropdown-item border-bottom">
+                <i class="fas fa-id-badge text-info"></i>
+                 <?php echo $row['acct_num']; ?>
+              </h6>
               <a class="dropdown-item">
                 <i class="fas fa-cog text-primary"></i>
                 Settings
@@ -67,9 +81,15 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="dashboard">
               <i class="fas fa-tachometer-alt"></i>
               <span class="menu-title ps-3">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="profile" >
+              <i class="fas fa-id-badge"></i>
+              <span class="menu-title ps-3">Profile</span>
             </a>
           </li>
           <li class="nav-item">
