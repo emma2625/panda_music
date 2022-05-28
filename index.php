@@ -1,3 +1,6 @@
+<?php 
+    require 'assets/config/db_connect.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -89,24 +92,52 @@
             </div>
 
             <div class="row">
-
+            <audio src="" type="audio/mp3" id="player"></audio>
+           
                 <!-- Single Album Area -->
+                <?php 
+                    $sql = "SELECT * FROM music";
+                    $query = mysqli_query($connectDb,$sql);
+                    while ($row = mysqli_fetch_assoc($query)) {
+                ?>
                 <div class="col-12 col-sm-6 col-md-4 col-lg-2">
                     <div class="single-album-area wow fadeInUp" data-wow-delay="100ms">
                         <div class="album-thumb">
-                            <img src="assets/img/bg-img/b1.jpg" alt="">
+                            <img src="assets/img/cover_img/<?php echo $row['cover_image'] ?>" alt="">
                         </div>
                         <div class="album-info">
                             <a href="#">
-                                <h5>Garage Band</h5>
+                                <h5><?php echo ucwords($row['music_title']); ?></h5>
                             </a>
-                            <p>Hip Hop</p>
+                            <p><?php echo ucwords($row['genre']); ?></p>
+                            <form id="streamForm">
+                                <input type="hidden" name="song" value="<?php echo $row['audio_file']; ?>">
+                                <input type="hidden" name="id" value="btn<?php echo $row['id']; ?>">
+                                <button  style="font-size: 21px;" class=" btn btn-light fa fa-play-circle" id="btn<?php echo $row['id']; ?>"></button>
+                                <button  style="font-size: 21px;" class=" btn btn-light fa fa-pause-circle d-none" id="btn<?php echo $row['id']; ?>"></button>
+                                <a href="assets/music/<?php echo $row['audio_file'] ?>" download style="font-size: 23px;" class="btn btn-light fa fa-download"></a>
+                            </form>
                         </div>
                     </div>
                 </div>
-
-
-
+                <?php } ?>
+                <script>
+                    const player = document.querySelector('#player');
+                    const streamForms = document.querySelectorAll('#streamForm');
+                    streamForms.forEach((forms)=>{
+                        forms.addEventListener('submit',(e)=>{
+                            e.preventDefault();
+                            player.setAttribute('src',`assets/music/${forms.song.value}`);
+                            player.play();
+                            let id =  forms.id.value;
+                            document.querySelectorAll(id).forEach((btn)=>{
+                                btn.classList.toggle('d-none')
+                            })
+                        })
+                    })
+                    
+                </script>
+                    
             </div>
 
             <div class="row">
