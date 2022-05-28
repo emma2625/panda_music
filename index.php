@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="assets/css/classy-nav.css">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fontawesome/css/all.css">
 
 </head>
 
@@ -103,7 +104,7 @@
                 <div class="col-12 col-sm-6 col-md-4 col-lg-2">
                     <div class="single-album-area wow fadeInUp" data-wow-delay="100ms">
                         <div class="album-thumb">
-                            <img src="assets/img/cover_img/<?php echo $row['cover_image'] ?>" alt="">
+                            <img src="assets/img/cover_img/<?php echo $row['cover_image'] ?>" alt="" style="height: 230px;">
                         </div>
                         <div class="album-info">
                             <a href="#">
@@ -115,7 +116,7 @@
                                 <input type="hidden" name="id" value="btn<?php echo $row['id']; ?>">
                                 <button  style="font-size: 21px;" class=" btn btn-light fa fa-play-circle" id="btn<?php echo $row['id']; ?>"></button>
                                 <button  style="font-size: 21px;" class=" btn btn-light fa fa-pause-circle d-none" id="btn<?php echo $row['id']; ?>"></button>
-                                <a href="assets/music/<?php echo $row['audio_file'] ?>" download style="font-size: 23px;" class="btn btn-light fa fa-download"></a>
+                                <a href="assets/music/<?php echo $row['audio_file'] ?>" download="efkemfke" style="font-size: 23px;" class="btn btn-light fa fa-download"></a>
                             </form>
                         </div>
                     </div>
@@ -130,8 +131,12 @@
                             player.setAttribute('src',`assets/music/${forms.song.value}`);
                             player.play();
                             let id =  forms.id.value;
-                            document.querySelectorAll(id).forEach((btn)=>{
-                                btn.classList.toggle('d-none')
+                            console.log(id);
+                            const btns = document.querySelectorAll(`#${id}`)
+                            console.log(btns);
+                            btns.forEach((btn)=>{
+                                btn.classList.toggle('d-none');
+                                
                             })
                         })
                     })
