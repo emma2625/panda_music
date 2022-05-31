@@ -104,6 +104,12 @@
               <span class="menu-title ps-3">Upload Music</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="store">
+              <i class="fas fa-store"></i>
+              <span class="menu-title ps-3">Store</span>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- FULL NAV ENDS HERE -->

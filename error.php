@@ -1,3 +1,4 @@
+<?php include_once 'assets/includes/sessions.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +13,13 @@
         <div class="container mt-5">
             <div class="text-center">
                 <h1>404 Error <br>Page Not Found</h1>
-                <a href="index" class="btn btn-primary">Go back</a>
+                <?php 
+                    if(!isset($_SESSION['id'])){
+                        echo "<a href=\"index\" class=\"btn btn-primary\">Go back</a>";
+                    }else{
+                        echo "<a href=\"player/dashboard\" class=\"btn btn-primary\">Go back</a>"; 
+                    }
+                ?>
             </div>
         </div>
     </section>
