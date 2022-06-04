@@ -153,6 +153,7 @@ elseif(isset($_POST['payOffline'])){
     $acct = $_POST['uuid'];
     $status = "pending..";
     $file = $_FILES['proof'];
+    $date = date('Y-m-d h:i:s g');
    
 
     $fileName = $file['name'];
@@ -195,8 +196,8 @@ elseif(isset($_POST['payOffline'])){
                     $_SESSION['successmessage'] = "Payment successful, pending approval..";
                     header("Location: ../../player/store");
                 } else {
-                  echo  $_SESSION['errormessage'] = "Something went wrong ";
-                    //header("Location: ../../player/store");
+                    $_SESSION['errormessage'] = "Something went wrong ";
+                    header("Location: ../../player/store");
                 }
 
            }else{

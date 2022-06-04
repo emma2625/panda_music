@@ -94,10 +94,10 @@
                             txref = response.data.txRef, chargeResponse = response.data.chargeResponseCode;
                             if (chargeResponse == "00" || chargeResponse == "0") {
                             //   if payment failed
-                            window.location = "forgot?report=failed";
+                                 window.location = "payment?report=failed";
                             } else {
                                 //when successful
-                            window.location = "forgot?report=Success";
+                            window.location = "payment?report=adjcndcwuijnqodw2u1wdhm12edhiwnqddh230j9123yqdfj0ow3jfnqshidkdh8qc9asixm2ed89iqwejndik9oa&amount=<?php echo $coinAmount; ?>";
                             }
                         }
                         }

@@ -1,6 +1,8 @@
 <?php 
   require_once "../assets/config/db_connect.php";
   require_once "../assets/includes/sessions.php";
+
+
   // Included Navbar
   $currentUser = $_SESSION['id'];
   $sql = "SELECT * FROM users WHERE id = '$currentUser'";
@@ -13,6 +15,9 @@
 <div class="content-wrapper">
     <?php echo errorMessage(); echo successMessage();?>
     <div class="card p-3 shadow-sm mx-auto" style="max-width: 500px;">
+        <div class="text-right my-3">
+            <a href="vouchers" class="btn btn-outline-primary">View transactions</a>
+        </div>
         <img src="../assets/img/cover_img/pandaCoin.png" style="height: 100px;" class="d-block mx-auto">
 
         <h3>Buy Panda Coins</h3>

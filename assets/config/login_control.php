@@ -29,6 +29,7 @@
 
             if (password_verify($password, $returnedPassword)) {
                 $_SESSION['id'] = $row['id'];
+                $_SESSION['role'] = $row['user_role'];
                 $_SESSION['errormessage'] = "Get ready to party ". $row['full_name'];
                 header('Location: ../../player/dashboard');
             }else{

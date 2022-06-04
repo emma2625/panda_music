@@ -34,10 +34,12 @@
           </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
+          <?php if($_SESSION['role'] !== 'admin'){ ?>    
           <li class="nav-item nav-settings me-5 d-none d-lg-flex">
             <img src="../assets/img/core-img/pandaCoin.png" alt="coin" id="navCoin">
             <span><?php echo $row['panda_coin'] ?></span>
           </li>
+          <?php } ?>
           <!-- Profile Pic And DropDown Start -->
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
@@ -86,6 +88,7 @@
               <span class="menu-title ps-3">Dashboard</span>
             </a>
           </li>
+          <?php if($_SESSION['role'] !== 'admin'){?>
           <li class="nav-item">
             <a class="nav-link" href="profile" >
               <i class="fas fa-id-badge"></i>
@@ -110,6 +113,14 @@
               <span class="menu-title ps-3">Store</span>
             </a>
           </li>
+          <?php }else{ ?>
+          <li class="nav-item">
+            <a class="nav-link" href="transactions">
+              <i class="fas fa-store"></i>
+              <span class="menu-title ps-3">Transactions</span>
+            </a>
+          </li>
+          <?php } ?>
         </ul>
       </nav>
       <!-- FULL NAV ENDS HERE -->

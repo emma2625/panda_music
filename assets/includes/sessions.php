@@ -40,3 +40,10 @@ function auth(){
         header('Location: ../auth');
     }
 }
+function adminAuth(){
+    if ($_SESSION['role'] !== 'admin') {
+        session_unset();
+        session_destroy();
+        header('Location: ../index');
+    }
+}

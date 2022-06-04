@@ -13,7 +13,7 @@
 <div class="content-wrapper">
     <?php echo errorMessage(); echo successMessage();?>
 
-
+    <?php if ($_SESSION['role'] !== 'admin') {?>
     <div class="row">
         <div class="col-md-8 mb-2">
             <div class="card mx-auto p-3">
@@ -33,7 +33,8 @@
                                 <h5 class="fw-bold p-3 shadow-sm">Title: <span><?php echo $row['music_title']; ?></span>
                                 </h5>
                                 <h5 class="fw-bold p-3 shadow-sm">Artist:
-                                    <span><?php echo $row['music_artist']; ?></span></h5>
+                                    <span><?php echo $row['music_artist']; ?></span>
+                                </h5>
                             </div>
                             <form id="playerList">
                                 <input type="hidden" name="title" value="<?php echo $row['music_title']; ?>">
@@ -91,6 +92,55 @@
             </div>
         </div>
     </div>
+    <?php }else{ ?>
+    <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <div class="card shadow p-3">
+        <div class="d-flex justify-content-end">
+            <div class="card p-2 shadow-sm">
+                <h5>
+                    <i class="fa fa-users"></i> Total Users
+                </h5>
+                <?php 
+                         $sql = "SELECT * FROM users WHERE user_role != 'admin'";
+                         $query = mysqli_query($connectDb,$sql);
+                        echo "<h6 class=\"text-center\">".mysqli_num_rows($query) ."</h6>"
+                    ?>
+            </div>
+        </div>
+
+        <div class="table-responsive my-3">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">User Name</th>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Country</th>
+                        <th scope="col">...</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                        $sql = "SELECT * FROM users WHERE user_role != 'admin'";
+                        $query = mysqli_query($connectDb,$sql);
+                        while ($row = mysqli_fetch_assoc($query)) {
+                    ?>
+                    <tr>
+                        <th scope="row"><?php echo $row['username']; ?></th>
+                        <td><?php echo $row['full_name']; ?></td>
+                        <td><?php echo $row['email']; ?></td>
+                        <td><?php echo $row['country']; ?></td>
+                        <td>
+                            <a href="user-details?user=<?php echo $row['acct_num']; ?>" class="fa fa-eye btn btn-outline-info"></a>
+                        </td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <?php } ?>
 </div>
 
 <script>
@@ -140,23 +190,23 @@ playerList.forEach((forms) => {
         setTimeout(() => {
             const toPlay = document.querySelector('#toPlay');
             toPlay.play();
-          }, 1000)
-          const btnLayer = document.querySelector('#btnLayer');
-          btnLayer.classList.remove('d-none');
+        }, 1000)
+        const btnLayer = document.querySelector('#btnLayer');
+        btnLayer.classList.remove('d-none');
     })
 })
 
 play.addEventListener('click', () => {
-  let toPlay = document.querySelector('#toPlay');
-  toPlay.play()
-  pause.classList.toggle('d-none')
-  play.classList.toggle('d-none')
+    let toPlay = document.querySelector('#toPlay');
+    toPlay.play()
+    pause.classList.toggle('d-none')
+    play.classList.toggle('d-none')
 })
 pause.addEventListener('click', () => {
-  let toPlay = document.querySelector('#toPlay');
-  toPlay.pause()
-  pause.classList.toggle('d-none')
-  play.classList.toggle('d-none')
+    let toPlay = document.querySelector('#toPlay');
+    toPlay.pause()
+    pause.classList.toggle('d-none')
+    play.classList.toggle('d-none')
 })
 </script>
 <!-- Included footer -->

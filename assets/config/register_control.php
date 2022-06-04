@@ -17,11 +17,17 @@
         $cPass = $_POST['cpass'];
         $acctNum = "PM".rand(1000000,9999999);
         $pCoin = 12;
+        $role = 'user';
         $date = date("Y-m-d h:i:s");
 
-
+        $sql = "SELECT * FROM users WHERE email = '$email'";
+        $query = mysqli_query($connectDb,$sql);
+        if(mysqli_num_rows($query) > 0){
+            $_SESSION['errormessage'] = "A user with this email already exists!";
+            header("Location: ../../auth#message");
+        }
         // Set Connstraints 
-        if (strlen($password) < 8) {
+        elseif (strlen($password) < 8) {
             $_SESSION['errormessage'] = "Password must not be less than 8 characters";
             header("Location: ../../auth#message");
         }
@@ -41,7 +47,7 @@
 
             // Save to DataBase
             // 1. Prepare Query String
-            $sql = "INSERT INTO users(full_name,username,email,user_password,acct_num,panda_coin,date_created) VALUES(?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO users(full_name,username,email,user_password,acct_num,panda_coin,user_role,date_created) VALUES(?,?,?,?,?,?,?,?)";
 
             // 2. Initialize connection
             $stmt = mysqli_stmt_init($connectDb);
@@ -50,7 +56,7 @@
             mysqli_stmt_prepare($stmt,$sql);
 
             // 4. Bind our values to the placeholders
-            mysqli_stmt_bind_param($stmt,"sssssis", $fullName,$userName,$email,$password,$acctNum,$pCoin,$date);
+            mysqli_stmt_bind_param($stmt,"sssssiss", $fullName,$userName,$email,$password,$acctNum,$pCoin,$role,$date);
             
             // 5.Execute the Statement
             if (mysqli_stmt_execute($stmt)) {
