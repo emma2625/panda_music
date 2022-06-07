@@ -77,6 +77,20 @@ elseif (isset($_GET['cancelTransaction'])) {
         $_SESSION['errormessage'] = "Update Failed, please contact support";
         header("Location: ../../player/transactions");
     }
+}
+elseif (isset($_GET['del'])) {
+   $delId = $_GET['del'];
+   $sql = "DELETE FROM offline_payment WHERE id = '$delId'";
+   $query = mysqli_query($connectDb, $sql);
+
+        // Delete successfull
+        if ($query) {
+            $_SESSION['successmessage'] = "Records has been deleted";
+            header("Location: ../../player/transactions");
+        } else {
+            $_SESSION['errormessage'] = "Delete Failed, please contact support";
+            header("Location: ../../player/transactions");
+        }
 } else {
     header('Location: logout');
 }

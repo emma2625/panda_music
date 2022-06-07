@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Panda Music | Admin</title>
+  <title>Panda Music</title>
   <link rel="stylesheet" href="../assets/css/dashnav.css">
   <link rel="stylesheet" href="../assets/css/personal-extra.css">
   <link rel="stylesheet" href="../assets/fontawesome/css/all.css">
@@ -25,8 +25,8 @@
         </button>
         <ul class="navbar-nav me-lg-2">
           <li class="nav-item nav-search d-none d-lg-block">
-            <form class="input-group">
-              <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+            <form action="dashboard" method="GET" class="input-group">
+              <input type="text" name="search" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
               <button class="btn">
                   <i class="fas fa-search"></i>
               </button>
@@ -111,6 +111,12 @@
             <a class="nav-link" href="store">
               <i class="fas fa-store"></i>
               <span class="menu-title ps-3">Store</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="referal">
+              <i class="fas fa-store"></i>
+              <span class="menu-title ps-3">Referal</span>
             </a>
           </li>
           <?php }else{ ?>

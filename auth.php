@@ -92,6 +92,11 @@
                         <!-- Register Form Starts -->
                         <div class="login-form register d-none">
                             <form action="assets/config/register_control" method="post">
+                                <?php 
+                                    if (isset($_GET['ref'])) {
+                                        echo " <input type=\"hidden\" name=\"refBy\" value=\"". $_GET['ref']."\">";
+                                    }
+                                ?>
                                 <h3>Create an Account to get Started</h3>
                                 <div class="form-group">
                                     <label for="exampleInputName">Full Name</label>
@@ -110,6 +115,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Password</label>
                                     <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
+
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Confirm Password</label>

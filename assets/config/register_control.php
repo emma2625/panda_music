@@ -18,6 +18,9 @@
         $acctNum = "PM".rand(1000000,9999999);
         $pCoin = 12;
         $role = 'user';
+        $ref = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$$^&_+)(";
+        $ref = str_shuffle($ref);
+        $ref = substr($ref, 7,15);
         $date = date("Y-m-d h:i:s");
 
         $sql = "SELECT * FROM users WHERE email = '$email'";
@@ -47,7 +50,7 @@
 
             // Save to DataBase
             // 1. Prepare Query String
-            $sql = "INSERT INTO users(full_name,username,email,user_password,acct_num,panda_coin,user_role,date_created) VALUES(?,?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO users(full_name,username,email,user_password,acct_num,panda_coin,user_role,ref_code,date_created) VALUES(?,?,?,?,?,?,?,?,?)";
 
             // 2. Initialize connection
             $stmt = mysqli_stmt_init($connectDb);
@@ -56,7 +59,7 @@
             mysqli_stmt_prepare($stmt,$sql);
 
             // 4. Bind our values to the placeholders
-            mysqli_stmt_bind_param($stmt,"sssssiss", $fullName,$userName,$email,$password,$acctNum,$pCoin,$role,$date);
+            mysqli_stmt_bind_param($stmt,"sssssisss", $fullName,$userName,$email,$password,$acctNum,$pCoin,$role,$ref,$date);
             
             // 5.Execute the Statement
             if (mysqli_stmt_execute($stmt)) {
