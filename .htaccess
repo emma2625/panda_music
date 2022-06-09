@@ -14,5 +14,5 @@ RewriteCond %{REQUEST_FILENAME} !-f
 
 
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
-ErrorDocument 404 https://localhost/panda_music/error
+ErrorDocument 404 http://pandamusic.mkpropertiesonline.com/error
 

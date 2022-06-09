@@ -5,7 +5,7 @@
 
        // Check if the button was pushed
        if (!isset($_POST['login'])) {
-            $_SESSION['errormessage'] = "Please Create an Account to Continue";
+          echo  $_SESSION['errormessage'] = "Please Create an Account to Continue";
             header("Location: ../../auth#message");
        }else{
         
@@ -28,16 +28,16 @@
             $returnedPassword = $row['user_password'];
 
             if (password_verify($password, $returnedPassword)) {
-                $_SESSION['id'] = $row['id'];
-                $_SESSION['role'] = $row['user_role'];
+             echo   $_SESSION['id'] = $row['id'];
+               echo $_SESSION['role'] = $row['user_role'];
                 $_SESSION['errormessage'] = "Get ready to party ". $row['full_name'];
-                header('Location: ../../player/dashboard');
+               header('Location: ../../player/dashboard');
             }else{
-                $_SESSION['errormessage'] = "Incorrect Password";
-                header("Location: ../../auth#message");
+             echo   $_SESSION['errormessage'] = "Incorrect Password";
+               header("Location: ../../auth#message");
             }
         }else{
-            $_SESSION['errormessage'] = "This email does not exist";
+          echo  $_SESSION['errormessage'] = "This email does not exist";
             header("Location: ../../auth#message");
         }
 

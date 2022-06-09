@@ -70,68 +70,36 @@
                    <div id="message">
                    <?php  echo errorMessage(); echo successMessage(); ?>
                    </div>
-                        <!-- Login Form -->
+                        <!-- Reset Pin  Form -->
+                        <?php 
+                           if (!isset($_GET['sentMail'])) {
+                        ?>
                         <div class="login-form login">
-                            <h3>Welcome Back</h3>
+                            <h3>Lets get you back online!!!</h3>
                             
                             <label for="exampleInputEmail1" class="d-block text-left">Email address</label>
-                            <form action="assets/config/login_control" method="post">
+                            <form action="assets/config/reset" method="post">
                                 <div class="form-group">
                                     <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter E-mail">
                                     <small id="emailHelp" class="form-text text-muted"><i class="fa fa-lock mr-2"></i>We'll never share your email with anyone else.</small>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label>
-                                    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                                </div>
-                                <button type="submit" name="login" class="btn oneMusic-btn mt-30">Login</button>
-                                <a href="#" class="nav-link text-dark" onclick="change()">Create An Account Today to get 12 panda coins</a>
-                                <a href="forgot1" class="nav-link text-dark">Forgot Plain Email</a>
-                                <a href="forgot2" class="nav-link text-dark">Forgot HTML Email</a>
-                  
+                                <button type="submit" name="sendPlainEmail" class="btn oneMusic-btn mt-30">Send Pin</button>
                             </form>
                         </div>
-
-                        <!-- Register Form Starts -->
-                        <div class="login-form register d-none">
-                            <form action="assets/config/register_control" method="post">
-                                <?php 
-                                    if (isset($_GET['ref'])) {
-                                        echo " <input type=\"hidden\" name=\"refBy\" value=\"". $_GET['ref']."\">";
-                                    }
-                                ?>
-                                <h3>Create an Account to get Started</h3>
+                        <?php }else{ ?>
+                            <div class="login-form login">
+                            <h3>Enter the 6 digit OTP code sent to your mail!</h3>
+                            <form action="assets/config/reset" method="post">
                                 <div class="form-group">
-                                    <label for="exampleInputName">Full Name</label>
-                                    <input type="text" class="form-control" name="fname" id="exampleInputName" placeholder="Enter Full Name">
+                                    <label>Enter Token:</label>
+                                    <input type="text" name="token" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter E-mail">
+                                    <label>Enter New Password:</label>
+                                    <input type="password" name="pass" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter E-mail">
                                 </div>
-
-                                <div class="form-group">
-                                    <label for="example">User Name</label>
-                                    <input type="text" class="form-control" name="uname" id="example" placeholder="Enter User Name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter E-mail">
-                                    <small id="emailHelp" class="form-text text-muted"><i class="fa fa-lock mr-2"></i>We'll never share your email with anyone else.</small>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label>
-                                    <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
-
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Confirm Password</label>
-                                    <input type="password" class="form-control" name="cpass" id="exampleInputPassword1" placeholder="Confirm Password">
-                                </div>
-                                <button type="submit" name="register" class="btn oneMusic-btn mt-30">Register</button>
-
-
-                                <a href="#" class="nav-link text-dark" onclick="change()">Login Instead</a>
-                                <a href="forgot1" class="nav-link text-dark">Forgot Plain Email</a>
-                                <a href="forgot2" class="nav-link text-dark">Forgot HTML Email</a>
+                                <button type="submit" name="resetPassword" class="btn oneMusic-btn mt-30">Reset</button>
                             </form>
-                        <!-- Register Form Ends -->
+                        </div>
+                        <?php } ?>
                         </div>  
                         <!-- register form ends -->
                     </div>
@@ -169,14 +137,6 @@
     <script src="assets/js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="assets/js/active.js"></script>
-    <script>
-        function change() {
-            document.querySelector('.register').classList.toggle('d-none')
-            document.querySelector('.login').classList.toggle('d-none')
-            document.querySelector('.textText').classList.toggle('d-none')
-            document.querySelector('.textText2').classList.toggle('d-none')
-        }
-    </script>
 </body>
 
 </html>
